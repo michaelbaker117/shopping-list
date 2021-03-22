@@ -1,25 +1,49 @@
 <!doctype html>
 <html>
    <head>
-      <style>
-         table {
-            font-size: 18pt;
-         }
-      </style>
-      <script type = "text/javascript" 
+       <meta charset="utf-8"/>
+       <meta name="viewport" content="width=device-width,initial-scale=0"/>
+       <title>Cart</title>
+       <link rel="stylesheet" type="text/css" href="static/styles.css"/>
+       <style>
+           body {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+           }
+           header {
+               width: 100%;
+           }
+           table {
+               background-color: deepskyblue;
+               border-style: solid;
+               font-size: 18pt;
+               width: 50%;
+           }
+           form {
+               display: flex;
+               justify-content: center;
+               padding-top: 5px;
+               width: 50%;
+           }
+           .btn1{
+               width: 40%;
+           }
+       </style>
+       <script type = "text/javascript" 
       src = "{{ url_for('static', filename = 'checkout.js') }}" ></script>
    </head>
    <body>
-      <h1>Shopping Cart</h1>
-      <table>
-         {% for key, value in cart.items() %}
+       <header><h1>Your Cart</h1></header>
+        <table>
+            {% for key, value in cart.items() %}
             <tr>
-               <th> {{ key }} </th>
+                <th> {{ key }} </th>
             </tr>
-         {% endfor %}
-         </table>
-      <form action = "http://localhost:5000/checkout" method = "POST">
-         <input type = "button" onclick = "checkout()" value = "checkout" />
-      </form>
+            {% endfor %}
+        </table>
+        <form action = "http://localhost:5000/checkout" method = "POST">
+            <input class="btn1" type = "button" onclick = "checkout()" value = "checkout" />
+        </form>
    </body>
 </html>
